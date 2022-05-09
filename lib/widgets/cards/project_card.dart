@@ -29,8 +29,7 @@ class ProjectCard extends StatelessWidget {
         );
       },
       child: Container(
-        height: 350,
-        width: MediaQuery.of(context).size.width / 1.3,
+        width: 300,
         padding: const EdgeInsets.all(15),
         margin: const EdgeInsets.only(top: 15, bottom: 25, right: 25),
         decoration: BoxDecoration(
@@ -51,9 +50,14 @@ class ProjectCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  project.name,
-                  style: const TextStyle(fontSize: 22),
+                Expanded(
+                  child: Text(
+                    project.name,
+                    style: const TextStyle(
+                      fontSize: 22,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                 ),
                 YearTag(year: project.year),
               ],

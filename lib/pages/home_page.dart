@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import '../widgets/headers/header.dart';
+
+import 'package:portfolio_shubhank/responsive.dart';
 import 'package:portfolio_shubhank/example/projects.dart';
 import 'package:portfolio_shubhank/widgets/cards/project_card.dart';
 
@@ -41,23 +43,45 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 15),
-                  SizedBox(
-                    // height: MediaQuery.of(context).size.height,
-                    height: 350,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: projects.length,
-                      itemBuilder: (BuildContext context, int index) =>
-                          ProjectCard(
-                        project: projects[index],
-                      ),
-                    ),
+                  Responsive(
+                    desktop: desktopBuilder(),
+                    mobile: mobileTabletBuilder(350),
+                    tablet: mobileTabletBuilder(450),
                   ),
                 ],
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  SizedBox mobileTabletBuilder(double height) {
+    return SizedBox(
+      // height: MediaQuery.of(context).size.height,
+      height: height,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: projects.length,
+        itemBuilder: (BuildContext context, int index) => ProjectCard(
+          project: projects[index],
+        ),
+      ),
+    );
+  }
+
+  GridView desktopBuilder() {
+    return GridView.builder(
+      shrinkWrap: true,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        crossAxisSpacing: 5.0,
+        mainAxisSpacing: 5.0,
+      ),
+      itemCount: projects.length,
+      itemBuilder: (BuildContext context, int index) => ProjectCard(
+        project: projects[index],
       ),
     );
   }

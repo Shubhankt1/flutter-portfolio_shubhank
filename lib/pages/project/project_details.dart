@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:portfolio_shubhank/responsive.dart';
 import 'package:portfolio_shubhank/models/project.dart';
 import 'package:portfolio_shubhank/widgets/horizontal_tech_view.dart';
 import 'package:portfolio_shubhank/widgets/headers/project_header.dart';
@@ -26,12 +27,22 @@ class ProjectDetail extends StatelessWidget {
                   const SizedBox(height: 25),
                   Hero(
                     tag: project.name,
-                    child: ClipRRect(
-                      child: Image.network(
+                    child: Responsive(
+                      mobile: Image.network(
                         project.imgUrl,
                         fit: BoxFit.cover,
                       ),
-                      borderRadius: BorderRadius.circular(15),
+                      tablet: Image.network(
+                        project.imgUrl,
+                        fit: BoxFit.cover,
+                      ),
+                      desktop: SizedBox(
+                        height: 350,
+                        child: Image.network(
+                          project.imgUrl,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 25),
