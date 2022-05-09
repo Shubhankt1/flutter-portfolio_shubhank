@@ -24,12 +24,15 @@ class ProjectDetail extends StatelessWidget {
                 children: [
                   ProjectHeader(project: project),
                   const SizedBox(height: 25),
-                  ClipRRect(
-                    child: Image.network(
-                      project.imgUrl,
-                      fit: BoxFit.cover,
+                  Hero(
+                    tag: project.name,
+                    child: ClipRRect(
+                      child: Image.network(
+                        project.imgUrl,
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.circular(15),
                     ),
-                    borderRadius: BorderRadius.circular(15),
                   ),
                   const SizedBox(height: 25),
                   Column(
