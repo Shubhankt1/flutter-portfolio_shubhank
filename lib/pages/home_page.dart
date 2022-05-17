@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../widgets/headers/header.dart';
 
@@ -18,6 +19,8 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.black,
         onPressed: () {
           log("FAB Pressed");
+          Share.share(
+              "Check out Shubhank's Portfolio App! https://portfolio-9cafc.web.app");
         },
         child: const Icon(
           Icons.share,
